@@ -23,66 +23,65 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: ModalProgressHUD(
-          color: Colors.black,
-          opacity: 0.5,
-          progressIndicator: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.yellow)
-          ),
-          inAsyncCall: isLoading,
-          child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 24.0),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Hero(
-                    tag: "logo",
-                    child: Container(
-                      height: 200.0,
-                      child: Image.asset('images/logo.png'),
-                    ),
+        color: Colors.black,
+        opacity: 0.5,
+        progressIndicator: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.yellow)),
+        inAsyncCall: isLoading,
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Flexible(
+                child: Hero(
+                  tag: "logo",
+                  child: Container(
+                    height: 200.0,
+                    child: Image.asset('images/logo.png'),
                   ),
-                  SizedBox(
-                    height: 48.0,
-                  ),
-                  TextField(
-                    keyboardType: TextInputType.emailAddress,
-                    style: inputTextStyle1,
-                    textAlign: TextAlign.center,
-                    onChanged: (value) {
-                      email = value;
-                    },
-                    decoration: inputDecorationStyle1.copyWith(
-                        hintText: "Enter your email"),
-                  ),
-                  SizedBox(
-                    height: 8.0,
-                  ),
-                  TextField(
-                    textAlign: TextAlign.center,
-                    obscureText: true,
-                    style: inputTextStyle1,
-                    onChanged: (value) {
-                      password = value;
-                    },
-                    decoration: inputDecorationStyle1.copyWith(
-                        hintText: "Enter your password"),
-                  ),
-                  SizedBox(
-                    height: 24.0,
-                  ),
-                  RoundedButton(
-                    title: 'Log In',
-                    color: Colors.blueAccent,
-                    onPressed: () {
-                      onLoginProcess();
-                    },
-                  ),
-                ],
+                ),
               ),
-            ),
-          )
+              SizedBox(
+                height: 28.0,
+              ),
+              TextField(
+                keyboardType: TextInputType.emailAddress,
+                style: inputTextStyle1,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  email = value;
+                },
+                decoration: inputDecorationStyle1.copyWith(
+                    hintText: "Enter your email"),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              TextField(
+                textAlign: TextAlign.center,
+                obscureText: true,
+                style: inputTextStyle1,
+                onChanged: (value) {
+                  password = value;
+                },
+                decoration: inputDecorationStyle1.copyWith(
+                    hintText: "Enter your password"),
+              ),
+              SizedBox(
+                height: 24.0,
+              ),
+              RoundedButton(
+                title: 'Log In',
+                color: Colors.blueAccent,
+                onPressed: () {
+                  onLoginProcess();
+                },
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -105,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
         showLoginFailed();
       }
     } catch (e) {
-      showLoginFailed(message : "catch $e");
+      showLoginFailed(message: "catch $e");
     }
 
     showLoading(false);
